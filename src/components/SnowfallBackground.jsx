@@ -4,6 +4,7 @@ export const SnowfallBackground = () => {
   const [snowflakes, setSnowflakes] = useState([]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
     generateSnowflakes();
 
     const handleResize = () => {
