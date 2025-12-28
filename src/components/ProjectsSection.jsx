@@ -1,12 +1,13 @@
 import { Description } from "@radix-ui/react-toast"
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import thaikoketImg from "../projects/thaikoket.png";
 
 const projects =  [
   {
     id: 1,
     title: "ThaiKoket",
     Description: "Thai cusine",
-    image: "src/projects/thaikoket.png",
+    image: thaikoketImg,
     tags: ["HTML", "CSS", "JavaScript"],
     demoUrl: "https://thaikoketkalix.se",
     githubUrl: "https://github.com/henryv2003/thaikoketkalix.github.io",
