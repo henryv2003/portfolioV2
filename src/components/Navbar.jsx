@@ -14,15 +14,35 @@ const NavItems = [
 export const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("hero")
 
   useEffect(() => {
+    const sectionIds = ["hero", "about", "skills", "projects", "contact"];
+
+    const updateActiveSection = () => {
+      const navEl = document.querySelector("nav");
+      const offset = navEl ? navEl.offsetHeight : 0;
+      const scrollPos = window.scrollY + offset + 1;
+      let current = "hero";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+
     const handleScroll = () => {
-        setIsScrolled(window.scrollY > 10)
+      setIsScrolled(window.scrollY > 10);
+      updateActiveSection();
     };
 
     window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll)
+    // Initialize on mount
+    handleScroll();
 
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
 
@@ -41,15 +61,19 @@ export const NavBar = () => {
         
         {/* Desktop */}
         <div className="hidden md:flex space-x-8">
-          {NavItems.map((item, key) => (
-            <a key={key} href={item.href} 
-              className="text-foreground/80
-                        hover:text-primary 
-                        transition-colors 
-                        duration-300">
+          {NavItems.map((item, key) => {
+            const isActive = activeSection === item.href.replace("#", "");
+            return (
+              <a key={key} href={item.href}
+                className={cn(
+                  "transition-colors duration-300",
+                  isActive ? "text-primary" : "text-foreground/80 hover:text-primary"
+                )}
+              >
                 {item.name}
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
         
         {/* Mobile*/}
@@ -66,18 +90,21 @@ export const NavBar = () => {
             isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           )}>
             <div className="flex flex-col space-y-8 text-xl">
-              {NavItems.map((item, key) => (
-                <a  key={key} 
-                    href={item.href} 
-                    className="text-foreground/80
-                              hover:text-primary 
-                              transition-colors 
-                              duration-300"
-                    onClick={() => setIsMenuOpen(false)}
-                              >
-                              {item.name}
-                </a>
-                ))}
+              {NavItems.map((item, key) => {
+                const isActive = activeSection === item.href.replace("#", "");
+                return (
+                  <a  key={key}
+                      href={item.href}
+                      className={cn(
+                        "transition-colors duration-300",
+                        isActive ? "text-primary" : "text-foreground/80 hover:text-primary"
+                      )}
+                      onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                );
+              })}
             </div>
         </div>
       </div>

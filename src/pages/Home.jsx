@@ -8,6 +8,7 @@ import { SnowfallBackground } from "../components/SnowfallBackground"
 import { StarBackground } from "../components/StarBackground"
 import { ThemeToggle } from "../components/ThemeToggle"
 import { ContactSection } from "../components/ContactSection"
+import { Footer } from "../components/Footer"
 
 export const Home = () => {
 return <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -20,11 +21,14 @@ return <div className="min-h-screen bg-background text-foreground overflow-x-hid
             {/* NavBar */}
               <NavBar/>
             {/* Main Content */}
+            <main>
               <HeroSection/>
               <AboutSection/>
               <SkillsSection/>
               <ProjectsSection />
               <ContactSection/>
+            </main>
             {/* Footer */}
+            <Footer/>
       </div>
 }
