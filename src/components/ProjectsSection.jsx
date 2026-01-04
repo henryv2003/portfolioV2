@@ -1,6 +1,8 @@
 import { Description } from "@radix-ui/react-toast"
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import thaikoketImg from "../projects/thaikoket.png";
+import portfolioImg from "../projects/portfoliov3.png";
+import portfolioImg2 from "../projects/portfolio3d.png";
 
 const projects =  [
   {
@@ -11,6 +13,24 @@ const projects =  [
     tags: ["HTML", "CSS", "JavaScript"],
     demoUrl: "https://thaikoketkalix.se",
     githubUrl: "https://github.com/henryv2003/thaikoketkalix.github.io",
+  },
+  {
+    id: 2,
+    title: "Portfolio Website",
+    Description: "3D Portfolio website",
+    image: portfolioImg,
+    tags: ["react", "tailwind", "JavaScript", "three.js"],
+    demoUrl: "https://henryv2003.github.io/portfolioV3/",
+    githubUrl: "https://github.com/henryv2003/portfolioV3",
+  },
+  {
+    id: 3,
+    title: "Portfolio Website",
+    Description: "3D Portfolio website",
+    image: portfolioImg2,
+    tags: ["react", "tailwind", "JavaScript", "three.js"],
+    demoUrl: "https://henryv2003.github.io/3d_portfolio/",
+    githubUrl: "https://github.com/henryv2003/3d_portfolio",
   },
 
 ];
